@@ -39,5 +39,4 @@ export const signUpValidationSchema = Yup.object().shape({
 export const blogValidationSchema = Yup.object().shape({
   title: Yup.string().required('please enter the title of blog').min(3,'at least 3 characters').max(15),
   body:Yup.string().required('please enter the body of blog').min(3,'at least 3 characters'),
-  userId: Yup.number().required('please enter your id').min(1)
 })

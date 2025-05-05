@@ -23,7 +23,6 @@
   gap: 0.5rem;
   width: 90vw;
 }
-
 .userIdSec{
   width:10%;
 }
@@ -34,4 +33,12 @@
 }
 .bodySec{
   width: 60%;
+}
+
+@media screen and (max-width: 600px) {
+  .blogCard{
+    display: flex;
+    flex-direction: column;
+    width: 75vw;
+  }
 }
