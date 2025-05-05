@@ -1,9 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { blogValidationSchema } from "../../utils/validation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 
-const AddBlog = () =>{
+const AddBlog = () => {
+  const navigate = useNavigate()
   const queryClient = useQueryClient()
   const initialValues = {
     title:'',
@@ -30,17 +32,18 @@ const AddBlog = () =>{
     }
   }
 
-  const {mutate,isError, isPending, error, data} = useMutation({
-    mutationFn: (values)=> {return createNewPost(values)},
+  const {mutate,isError, isPending,error} = useMutation({
+    mutationFn: (values) => {
+      return createNewPost(values)
+    },
     onSuccess:()=>{
       queryClient.invalidateQueries({queryKey:['blogs']})
-      console.log(data,"daataa")
-      // navigate('/dashboard')
+      navigate('/dashboard')
 
     }
   })
 
-    isError && console.log(error)
+isError && console.log(error)
 
     const handleSubmit = (values)=>{
       mutate(values);

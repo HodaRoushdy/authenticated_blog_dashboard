@@ -2,27 +2,30 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import styles from './dashboard.module.css';
 import { fetchBlogs } from '../blogs/Blogs';
 
+
 const handleDelete = async (id)=>{
     try {
         const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`,{
             method: 'DELETE',
-          })
+        })
         return res
     } catch (error) {
-        throw new Error ('error while deleting post')
+        throw new Error ('error while deleting post',error)
     }
 }
 
 const Dashboard = ()=>{
     
-    const {mutate,isError,isPending} = useMutation({
+    const {mutate,isError,error} = useMutation({
         mutationFn: (id) => {
             return handleDelete(id)
         },
         onSuccess:()=>{
-            console.log(data,"data from deleting")
+            console.log("deleted successfully")
         }
     });
+
+    isError && console.log("error while deleting",error)
 
     const onSubmit = (id) => {
         // event.preventDefault()
