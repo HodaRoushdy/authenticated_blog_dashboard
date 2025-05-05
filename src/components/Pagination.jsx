@@ -6,7 +6,7 @@ const Pagination = ({postsPerPage,totalPosts,setCurrentPage})=>{
         pages.push(i)
     }
     return(
-        <div>
+        <div style={{display:'flex',gap:'0.5rem'}}>
             {pages.map((page,idx)=>(
                 <button key={idx} onClick={()=> setCurrentPage(page)}>{page}</button>
             ))}
