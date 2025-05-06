@@ -12,17 +12,18 @@ export const fetchBlogs = async () =>{
         const blogs = await fetch('https://jsonplaceholder.typicode.com/posts')
         return blogs.json()
     } catch (error) {
-        throw Error('can not reach the resource')
+        throw Error('can not reach the resource',error)
     }
 }
 
 const Blogs = ()=>{
     const [currentPage,setCurrentPage] = useState(1)
-    const [postsPerPage,setPostsPerPage] = useState(10)
+  let postsPerPage = 10;
     const lastPostIndex = currentPage * postsPerPage;
-    const firstPostIndex = lastPostIndex - postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  
 
-     const {data, isPending,isLoading, isError, error} = useQuery({
+    const {data, isPending, isError} = useQuery({
         queryKey:['blogs'],
         queryFn: fetchBlogs,
         staleTime: 10000
@@ -50,9 +51,9 @@ const Blogs = ()=>{
             </div>
           </div>
         )) : <Lottie animationData={loadingAnimation} loop={true} />)}
-        <div style={{backgroundColor:'red'}}>
+        {data && <div>
         <Pagination postsPerPage={postsPerPage} totalPosts={data.length} setCurrentPage={setCurrentPage} />
-        </div>
+        </div>}
       </div>
     )
 }
