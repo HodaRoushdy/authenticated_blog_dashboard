@@ -15,6 +15,7 @@ export const fetchBlogs = async () =>{
         throw Error('can not reach the resource')
     }
 }
+
 const Blogs = ()=>{
     const [currentPage,setCurrentPage] = useState(1)
     const [postsPerPage,setPostsPerPage] = useState(10)
@@ -28,6 +29,7 @@ const Blogs = ()=>{
     })
 
     const currentPosts = data && data.slice(firstPostIndex,lastPostIndex)
+
     return(
         <div className={styles.blogsContainer}>
             <div className={styles.header}>

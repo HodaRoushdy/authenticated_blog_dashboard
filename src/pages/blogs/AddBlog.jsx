@@ -24,7 +24,6 @@ const AddBlog = () =>{
           'Content-type': 'application/json; charset=UTF-8',
         },
       })
-      console.log(res,"ress")
       return res
       
     } catch (error) {
@@ -36,7 +35,6 @@ const AddBlog = () =>{
     mutationFn: (values)=> {return createNewPost(values)},
     onSuccess:()=>{
       queryClient.invalidateQueries({queryKey:['blogs']})
-      console.log(data,"daataa")
       // navigate('/blogs')
       // navigate('/')
     }

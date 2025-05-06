@@ -15,7 +15,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      index: (
+      element: (
         <>
           <h1>
             Hello, you need to <Link to="/login">login</Link> or
