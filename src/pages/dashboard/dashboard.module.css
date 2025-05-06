@@ -3,10 +3,12 @@
     flex-direction: column;
 }
 .dashboardHeader{
+  padding: 0.5rem 1rem;
     background-color: rgba(171, 166, 169, 0.678);
     display: flex;
+    gap: 1rem;
     align-items: center;
-    width: 100%;
+    width: 100% ;
     border-radius: 0.5rem;
 }
 .dashboardHeader h3{
@@ -20,7 +22,8 @@
 .postCard{
     width: 30%;
     padding: 1rem 0;
-    background-color: rgba(171, 166, 169, 0.45);
+    /* background-color: rgba(171, 166, 169, 0.45);*/
+    background-color: rgb(231 223 228 / 46%);
     border-radius: 0.5rem;
 }
 .postsSec{
