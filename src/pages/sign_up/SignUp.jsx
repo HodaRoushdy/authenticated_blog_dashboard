@@ -9,11 +9,14 @@ const SignUp = () => {
     const navigate = useNavigate()
 
   const initialValues = {
+    name: "",
     email: "",
+    image: "",
     password: "",
     confirmPassword: "",
   };
   const handleSubmit = (values) => {
+    console.log(values)
     dispatch(login( JSON.stringify(values)))
        navigate('/blogs')
   };
@@ -30,9 +33,19 @@ const SignUp = () => {
         {({ isSubmitting }) => (
           <Form className='my_form'>
             <div className='input_group'>
+              <label htmlFor="name">Name:</label>
+              <Field name="name" type="string" />
+              <ErrorMessage name="name" component="span" />
+            </div>
+            <div className='input_group'>
               <label htmlFor="email">Email:</label>
               <Field name="email" type="email" />
               <ErrorMessage name="email" component="span" />
+            </div>
+            <div className='input_group'>
+              <label htmlFor="image">Image:</label>
+              <Field name="image" type="string" />
+              <ErrorMessage name="image" component="span" />
             </div>
             <div className='input_group'>
               <label htmlFor="password">Password:</label>

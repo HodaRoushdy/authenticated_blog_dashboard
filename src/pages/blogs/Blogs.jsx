@@ -29,7 +29,7 @@ const Blogs = ()=>{
         staleTime: 10000
     })
 
-    const currentPosts = data && data.slice(firstPostIndex,lastPostIndex)
+    const currentPosts = (!isPending && data.length ) && data.slice(firstPostIndex,lastPostIndex)
 
     return(
         <div className={styles.blogsContainer}>

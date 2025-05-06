@@ -7,6 +7,8 @@ import ErrorPage from "./pages/error/Error";
 import ProtectedRoutes from "./components/ProtectedRoute";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AddBlog from "./pages/blogs/AddBlog";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 
@@ -61,6 +63,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      <ToastContainer />
     </QueryClientProvider>
   );
 }

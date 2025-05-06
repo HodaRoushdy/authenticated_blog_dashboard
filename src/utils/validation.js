@@ -19,10 +19,14 @@ export const loginValidationSchema = Yup.object().shape({
 });
 
 export const signUpValidationSchema = Yup.object().shape({
+  name: Yup.string("Invalid name, enter characters only").required(
+    "Please enter your name"
+  ),
   email: Yup.string()
     .email("Invalid email address")
     .required("Please enter email address")
     .matches(emailRgx),
+  image: Yup.string("enter image url").required("image field is required"),
   password: Yup.string()
     .required("Password field is required")
     .min(8, "Password should be between 8 and 20 characters")
@@ -31,12 +35,17 @@ export const signUpValidationSchema = Yup.object().shape({
       message:
         "Password should have at lease 1 uppercase character, 1 special character and 1 number ",
     }),
-    confirmPassword: Yup.string()
+  confirmPassword: Yup.string()
     .required("Confirm Password field is required")
-    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
 
 export const blogValidationSchema = Yup.object().shape({
-  title: Yup.string().required('please enter the title of blog').min(3,'at least 3 characters').max(15),
-  body:Yup.string().required('please enter the body of blog').min(3,'at least 3 characters'),
-})
+  title: Yup.string()
+    .required("please enter the title of blog")
+    .min(3, "at least 3 characters")
+    .max(15),
+  body: Yup.string()
+    .required("please enter the body of blog")
+    .min(3, "at least 3 characters"),
+});

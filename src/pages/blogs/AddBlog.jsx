@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { blogValidationSchema } from "../../utils/validation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 const AddBlog = () => {
@@ -36,13 +37,16 @@ const AddBlog = () => {
       return createNewPost(values)
     },
     onSuccess:()=>{
+      toast.success(`Blog created successfully `, {
+        position: "top-right"
+      });
       queryClient.invalidateQueries({queryKey:['blogs']})
       navigate('/dashboard')
-
     }
   })
-
-isError && console.log(error)
+    isError && toast.error(`Error while creating blog ${error}`, {
+        position: "top-right"
+      });
 
     const handleSubmit = (values)=>{
       mutate(values);
