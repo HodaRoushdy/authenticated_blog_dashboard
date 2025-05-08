@@ -6,9 +6,18 @@ const AuthSlice = createSlice({
 		auth: localStorage.getItem("token") ? true : false,
 	},
 	reducers: {
-		login(state, action) {
+		signup(state, action) {
 			const { name, email, image } = JSON.parse(action.payload);
 			const user = { id: 20, name, email, image };
+			state.auth = true;
+			localStorage.setItem("token", JSON.stringify(user));
+			if (!localStorage.getItem("blogs")) {
+				localStorage.setItem("blogs", JSON.stringify([]));
+			}
+		},
+		login(state,action){
+			const { email } = action.payload;
+			const user = { id: 20, email };
 			state.auth = true;
 			localStorage.setItem("token", JSON.stringify(user));
 			if (!localStorage.getItem("blogs")) {
@@ -22,5 +31,5 @@ const AuthSlice = createSlice({
 	},
 });
 
-export const { login, logout } = AuthSlice.actions;
+export const { signup, logout, login } = AuthSlice.actions;
 export default AuthSlice;

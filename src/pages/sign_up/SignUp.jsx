@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { signUpValidationSchema } from "../../utils/validation";
 import { useDispatch } from "react-redux";
-import { login } from "../../store/AuthSlice";
+import { signup } from "../../store/AuthSlice";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
@@ -17,7 +17,7 @@ const SignUp = () => {
 	};
 	const handleSubmit = (values) => {
 		console.log(values);
-		dispatch(login(JSON.stringify(values)));
+		dispatch(signup(JSON.stringify(values)));
 		navigate("/blogs");
 	};
 	return (
