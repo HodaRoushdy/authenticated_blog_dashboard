@@ -3,76 +3,69 @@ import { toast } from "react-toastify";
 import styles from "./dashboard.module.css";
 
 const handleDelete = async (id) => {
-	try {
-		const res = await fetch(
-			`https://jsonplaceholder.typicode.com/posts/${id}`,
-			{
-				method: "DELETE",
-			}
-		);
-		return res;
-	} catch (error) {
-		throw new Error("error while deleting post", error);
-	}
+  try {
+    const res = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+    return res;
+  } catch (error) {
+    throw new Error("error while deleting post", error);
+  }
 };
 const userInfo = JSON.parse(localStorage.getItem("token"));
 const userBlogs = JSON.parse(localStorage.getItem("blogs"));
 
 const Dashboard = () => {
-	const { mutate, isError, error } = useMutation({
-		mutationFn: (id) => {
-			return handleDelete(id);
-		},
-		onSuccess: () => {
-			toast.success("Deleted successfully !", {
-				position: "top-right",
-			});
-		},
-	});
+  const { mutate, isError, error } = useMutation({
+    mutationFn: (id) => {
+      return handleDelete(id);
+    },
+    onSuccess: () => {
+      toast.success("Deleted successfully !", {
+        position: "top-right",
+      });
+    },
+  });
 
-	isError &&
-		toast.error(`Error while deleting ${error}`, {
-			position: "top-right",
-		});
+  isError &&
+    toast.error(`Error while deleting ${error}`, {
+      position: "top-right",
+    });
 
-	const onSubmit = (id) => {
-		// mutate(id);
-		console.log("entered deletion");
-		const filteredBlogs = userBlogs.filter((item) => item.id !== id);
-		console.log(filteredBlogs);
-		localStorage.setItem("blogs", JSON.stringify(filteredBlogs));
-	};
+  const onSubmit = (id) => {
+    // mutate(id);
+    const filteredBlogs = userBlogs.filter((item) => item.id !== id);
+    localStorage.setItem("blogs", JSON.stringify(filteredBlogs));
+  };
 
-	return (
-		<div className={styles.dashboardContainer}>
-			<div className={styles.dashboardHeader}>
-				<img
-					src={userInfo.image}
-					alt="userImg"
-				/>
-				<div>
-					<h2>{userInfo.name}</h2>
-					<h3>{userInfo.email}</h3>
-					<p>{userInfo.id}</p>
-				</div>
-			</div>
-			<h2>Posts:</h2>
-			<div className={styles.postsSec}>
-				{userBlogs &&
-					userBlogs.map((post) => (
-						<div
-							key={post.id}
-							className={styles.postCard}>
-							<div className={styles.postHeader}>
-								<h4>{post.title}</h4>
-							</div>
-							<p>{post.body}</p>
-							<button onClick={() => onSubmit(post.id)}>Delete</button>
-						</div>
-					))}
-			</div>
-		</div>
-	);
+  return (
+    <div className={styles.dashboardContainer}>
+      <div className={styles.dashboardHeader}>
+        <img src={userInfo.image} alt="userImg" />
+        <div>
+          <h2>{userInfo.name}</h2>
+          <h3>{userInfo.email}</h3>
+          <p>{userInfo.id}</p>
+        </div>
+      </div>
+      <h2>Posts:</h2>
+      <div className={styles.postsSec}>
+        {userBlogs &&
+          userBlogs.map((post) => (
+            <div key={post.id} className={styles.postCard}>
+              <div className={styles.postHeader}>
+                <h4>{post.title}</h4>
+              </div>
+              <p>{post.body}</p>
+              <button onClick={() => onSubmit(post.id)}>Delete</button>
+            </div>
+          ))}
+      </div>
+    </div>
+  );
 };
 
 export default Dashboard;

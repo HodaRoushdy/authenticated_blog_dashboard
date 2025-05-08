@@ -1,4 +1,4 @@
-.header{
+.header {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -23,20 +23,20 @@
   gap: 0.5rem;
   width: 90vw;
 }
-.userIdSec{
-  width:10%;
+.userIdSec {
+  width: 10%;
 }
-.titleSec{
+.titleSec {
   width: 30%;
   justify-content: flex-start;
   text-align: center;
 }
-.bodySec{
+.bodySec {
   width: 60%;
 }
 
 @media screen and (max-width: 600px) {
-  .blogCard{
+  .blogCard {
     display: flex;
     flex-direction: column;
     width: 75vw;
