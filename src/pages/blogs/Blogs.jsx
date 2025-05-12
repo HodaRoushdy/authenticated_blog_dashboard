@@ -42,9 +42,6 @@ const Blogs = () => {
       ) : !isPending ? (
         currentPosts.map((blog) => (
           <div className={styles.blogCard} key={blog.id}>
-            <div className={styles.userIdSec}>
-              <p>{blog.userId}</p>
-            </div>
             <div className={styles.titleSec}>
               <h3>{blog.title}</h3>
             </div>

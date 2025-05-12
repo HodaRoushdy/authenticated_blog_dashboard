@@ -36,6 +36,7 @@ const Dashboard = () => {
     });
 
   const onSubmit = (id) => {
+    /** Deleting blog in Database Using React Query */
     // mutate(id);
     const filteredBlogs = userBlogs.filter((item) => item.id !== id);
     localStorage.setItem("blogs", JSON.stringify(filteredBlogs));
@@ -48,10 +49,8 @@ const Dashboard = () => {
         <div>
           <h2>{userInfo.name}</h2>
           <h3>{userInfo.email}</h3>
-          <p>{userInfo.id}</p>
         </div>
       </div>
-      <h2>Posts:</h2>
       <div className={styles.postsSec}>
         {userBlogs &&
           userBlogs.map((post) => (
