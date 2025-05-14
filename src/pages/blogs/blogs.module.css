@@ -36,14 +36,15 @@
   align-items: center;
   gap: 0.2rem;
   cursor: pointer;
-
 }
 
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 682px) {
   .blogCard {
-    display: flex;
-    flex-direction: column;
-    width: 75vw;
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 683px) and (max-width: 1029px) {
+  .blogCard {
+    width: 45%;
   }
 }
