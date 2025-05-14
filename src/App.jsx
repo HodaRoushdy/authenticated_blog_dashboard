@@ -13,6 +13,7 @@ import SignUp from "./pages/sign_up/SignUp";
 import Navbar from "./components/Navbar/Navbar";
 import { useSelector } from "react-redux";
 import Logout from "./pages/logout/logout";
+import BlogDetails from "./pages/blogs/blogDetails/BlogDetails";
 
 
 function App() {
@@ -60,6 +61,10 @@ function App() {
                   path: "add-blog", // relative path
                   element: <AddBlog />,
                 },
+                {
+                  path:'/blogs/blog-details/:id',
+                  element: <BlogDetails/>
+                }
               ],
             },
 			{

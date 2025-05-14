@@ -12,7 +12,7 @@ const handleDelete = async (id) => {
     );
     return res;
   } catch (error) {
-    throw new Error("error while deleting post", error);
+    throw new Error(`error while deleting post ${error.message}`);
   }
 };
 const userInfo = JSON.parse(localStorage.getItem("token"));
@@ -52,7 +52,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className={styles.postsSec}>
-        {userBlogs &&
+        {userBlogs.length > 0 ?
           userBlogs.map((post) => (
             <div key={post.id} className={styles.postCard}>
               <div className={styles.postHeader}>
@@ -61,7 +61,7 @@ const Dashboard = () => {
               <p>{post.body}</p>
               <button onClick={() => onSubmit(post.id)}>Delete</button>
             </div>
-          ))}
+          )) : <p>You don't have any blogs, create your own now</p>}
       </div>
     </div>
   );

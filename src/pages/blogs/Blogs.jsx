@@ -3,21 +3,24 @@ import errorAnimation from "../../../public/error.json";
 import loadingAnimation from "../../../public/loading.json";
 import styles from "./blogs.module.css";
 import Lottie from "lottie-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Pagination from "../../components/pagination/Pagination";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-export const fetchBlogs = async () => {
+
+ const fetchBlogs = async () => {
   try {
     const blogs = await fetch("https://jsonplaceholder.typicode.com/posts");
     return blogs.json();
   } catch (error) {
-    throw Error("can not reach the resource", error);
+    throw Error(`can not reach the resource ${error.message}`);
   }
 };
 
 const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate()
   let postsPerPage = 10;
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
@@ -25,11 +28,15 @@ const Blogs = () => {
   const { data, isPending, isError } = useQuery({
     queryKey: ["blogs"],
     queryFn: fetchBlogs,
-    staleTime: import.meta.env.VITE_STALE_TIME,
+    staleTime: Number(import.meta.env.VITE_STALE_TIME) || 10000
   });
 
   const currentPosts =
-    !isPending && data.length && data.slice(firstPostIndex, lastPostIndex);
+    !isPending && data.length > 0 && data.slice(firstPostIndex, lastPostIndex);
+
+    const handleNavigate = (blogId)=>{
+      navigate(`/blogs/blog-details/${blogId}`)
+    }
 
   return (
     <div className={styles.blogsContainer}>
@@ -39,8 +46,9 @@ const Blogs = () => {
       </div>
       {isError ? (
         <Lottie animationData={errorAnimation} loop={true} />
-      ) : !isPending ? (
-        currentPosts.map((blog) => (
+      ) : (!isPending && currentPosts.length > 0) ? (
+        <div className={styles.blogs}>
+         { currentPosts.map((blog) => (
           <div className={styles.blogCard} key={blog.id}>
             <div className={styles.titleSec}>
               <h3>{blog.title}</h3>
@@ -48,12 +56,14 @@ const Blogs = () => {
             <div className={styles.bodySec}>
               <span>{blog.body}</span>
             </div>
+            <span onClick={() => handleNavigate(blog.id)} className={styles.arrowSec}>view details <ArrowForwardIcon/> </span>
           </div>
-        ))
+        ))}
+        </div>
       ) : (
         <Lottie animationData={loadingAnimation} loop={true} />
       )}
-      {data && (
+      {(!isPending && data.length > 0 ) && (
         <div>
           <Pagination
             currentPage={currentPage}

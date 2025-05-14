@@ -28,7 +28,7 @@ const AddBlog = () => {
       pastBlogs.push({ id: pastBlogs.length + 1, ...values });
       localStorage.setItem("blogs", JSON.stringify(pastBlogs));
     } else {
-      throw new Error("error while creating new blog", error);
+      throw new Error(`error while creating new blog ${error.message}`);
     }
     return res;
   };

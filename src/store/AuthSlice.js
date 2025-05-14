@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import personImg from '../../public/default img.jpg';
 
 const AuthSlice = createSlice({
 	name: "Auth",
@@ -17,7 +18,7 @@ const AuthSlice = createSlice({
 		},
 		login(state,action){
 			const { email } = action.payload;
-			const user = { id: 20, email };
+			const user = { id: 20, image: personImg, name: email.split('@')[0],email };
 			state.auth = true;
 			localStorage.setItem("token", JSON.stringify(user));
 			if (!localStorage.getItem("blogs")) {
