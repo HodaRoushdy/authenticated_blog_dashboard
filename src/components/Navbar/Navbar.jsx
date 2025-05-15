@@ -150,8 +150,8 @@ const Navbar = () => {
                   sx={{
                     p: 0,
                     overflow: "hidden",
-                    width: "4rem",
-                    height: "4rem",
+                    width: "3rem",
+                    height: "3rem",
                     display: "flex",
                     margin: "auto",
                   }}

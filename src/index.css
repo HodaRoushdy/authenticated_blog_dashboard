@@ -1,3 +1,4 @@
+@import "tailwindcss";
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -46,14 +47,13 @@ button {
 button:hover {
   background-color: #1a1a1a !important;
   color: white;
-
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 @media only screen and (max-width: 570px) {
-  button{
+  button {
     padding: 0.3em 0.6em;
   }
 }
@@ -70,4 +70,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-683px

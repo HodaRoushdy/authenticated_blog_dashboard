@@ -21,7 +21,7 @@ export const loginValidationSchema = Yup.object().shape({
 export const signUpValidationSchema = Yup.object().shape({
 	name: Yup.string("Invalid name, enter characters only").required(
 		"Please enter your name"
-	),
+	).min(3, "Name should be at least 3 characters"),
 	email: Yup.string()
 		.email("Invalid email address")
 		.required("Please enter email address")

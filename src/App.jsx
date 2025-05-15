@@ -1,8 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
 import ProtectedRoutes from "./components/ProtectedRoute";
 import AddBlog from "./pages/blogs/addBlog/AddBlog";
 import Blogs from "./pages/blogs/Blogs";
@@ -14,7 +12,8 @@ import Navbar from "./components/Navbar/Navbar";
 import { useSelector } from "react-redux";
 import Logout from "./pages/logout/logout";
 import BlogDetails from "./pages/blogs/blogDetails/BlogDetails";
-
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 function App() {
   const queryClient = new QueryClient();
