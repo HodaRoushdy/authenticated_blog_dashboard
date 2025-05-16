@@ -16,7 +16,7 @@ const SignUp = () => {
 		confirmPassword: "",
 	};
 	const handleSubmit = (values) => {
-		console.log(values);
+
 		dispatch(signup(JSON.stringify(values)));
 		navigate("/blogs");
 	};
@@ -37,27 +37,27 @@ const SignUp = () => {
 								<div>
 									<label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name:</label>
 									<Field name="name" type="string"  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="John Doe"   />
-									<ErrorMessage className="text-red-400" name="name" component="span" />
+									<ErrorMessage  className="flex text-red-400 text-left" name="name" component="span" />
 								</div>
 								<div>
 									<label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email:</label>
 									<Field name="email" type="email"  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com"   />
-									<ErrorMessage className="text-red-400	" name="email" component="span" />
+									<ErrorMessage className="flex text-red-400 text-left" name="email" component="span" />
 								</div>
 								<div>
 									<label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image:</label>
 									<Field name="image" type="string"  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="https://www.example.com"   />
-									<ErrorMessage className="text-red-400" name="name" component="span" />
+									<ErrorMessage  className="flex text-red-400 text-left" name="name" component="span" />
 								</div>
 								<div>
 									<label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password: </label>
 									<Field name="password" type="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="••••••••"   />
-									<ErrorMessage name="password" className="text-red-400" component="span" />
+									<ErrorMessage name="password" className="flex text-red-400 text-left" component="span" />
 								</div>
 								<div>
 									<label for="confirmPassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password: </label>
 									<Field name="password" type="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="••••••••"   />
-									<ErrorMessage name="password" className="text-red-400" component="span" />
+									<ErrorMessage name="password"  className="flex text-red-400 text-left" component="span" />
 								</div>
 								<button type="submit" class="w-full focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">sign up to your account</button>
 								<div class="text-sm font-medium text-gray-500 dark:text-gray-300">

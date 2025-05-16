@@ -151,7 +151,7 @@ const Navbar = () => {
                     p: 0,
                     overflow: "hidden",
                     width: "3rem",
-                    height: "3rem",
+                    height: "rem",
                     display: "flex",
                     margin: "auto",
                   }}

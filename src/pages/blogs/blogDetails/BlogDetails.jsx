@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 const BlogDetails = ()=>{
     const {id} = useParams();
     const navigate = useNavigate()
-    console.log(id)
+
      const fetchBlog = async () => {
         try {
           const blog = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
